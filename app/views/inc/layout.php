@@ -25,7 +25,7 @@
             <div class="max-w flex-spaced p1">
                 <div class="flex">
                     <a href="/" class="mr1 ml1"> Auto école   </a>
-                    <a href="/pages/about" class="mr1 ml1">  Apropos </a>
+                    <!-- <a href="/pages/about" class="mr1 ml1">  Apropos </a> -->
                     <a href="/pages/contact" class="mr1 ml1">  Contact </a>
                 </div>
                 <div class="flex">
@@ -40,7 +40,7 @@
             <div class="max-w flex-spaced p1">
                 <div class="flex">
                     <a href="/" class="mr1 ml1"> Auto école   </a>
-                    <a href="/pages/about" class="mr1 ml1">  Apropos </a>
+                    <!-- <a href="/pages/about" class="mr1 ml1">  Apropos </a> -->
                     <a href="/pages/contact" class="mr1 ml1">  Contact </a>
                 </div>
                 <div class="flex">

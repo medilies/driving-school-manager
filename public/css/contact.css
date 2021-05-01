@@ -1,0 +1,41 @@
+main {
+    background: url(/assets/img/bg3.jpg) no-repeat center center / cover;
+}
+#wrap {
+    height: calc(100vh - 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#contact {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border-radius: 1rem;
+}
+#contact > * {
+    margin: 2rem;
+}
+form > * {
+    width: 15rem;
+}
+input,
+textarea {
+    border-color: #04de54;
+}
+#data p {
+    font-size: 1.5rem;
+}
+.sp {
+    color: #8d1da8;
+    font-weight: bold;
+}
+footer {
+    background-color: #444;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+}

@@ -24,7 +24,7 @@ class Pages extends Controller
     {
         $data = [
             'title' => 'Contact',
-            'stylesheets_array' => [],
+            'stylesheets_array' => ['contact'],
             'scripts_array' => [],
         ];
         $this->view('pages/contact', $data);

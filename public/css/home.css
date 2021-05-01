@@ -1,4 +1,80 @@
-main {
+#hero {
     background: url(/assets/img/bg1.jpg) no-repeat center center / cover;
-    min-height: 100vh;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: baseline;
+    color: #fff;
+}
+#hero h1 {
+    color: #f53205;
+}
+#hero a {
+    padding: 0.5rem 1rem;
+    color: #f53205;
+    border-color: #f53205;
+}
+#hero a:hover {
+    padding: 0.5rem 1rem;
+    background-color: #f53205;
+    color: #fff;
+}
+
+#offre {
+    background: linear-gradient(77deg, #05faa4aa, #04de54aa);
+    text-align: center;
+    padding: 3rem;
+    color: #8d1da8;
+}
+#offre div {
+    display: flex;
+    justify-content: space-around;
+}
+#offre .card {
+    padding: 2rem 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 12rem;
+    margin-top: 2rem;
+}
+
+#clients {
+    background: url(/assets/img/bg2.jpg) no-repeat center center / cover;
+}
+#testamonial {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+#testamonial h2 {
+    color: #a8371d;
+    margin-top: 1rem;
+}
+#testamonial .card {
+    padding: 2rem 1rem;
+    font-size: 1.5rem;
+    width: 40rem;
+    margin-top: 2rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+#stats {
+    display: flex;
+    padding: 3rem;
+    justify-content: center;
+    font-size: 3rem;
+}
+#stats div {
+    padding: 1rem;
+    text-align: center;
+}
+footer {
+    background-color: #444;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
 }
