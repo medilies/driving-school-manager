@@ -138,6 +138,8 @@ tr:hover:nth-child(n + 2) {
 /**************************************************************************/
 nav {
     background: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
 }
 
 main {

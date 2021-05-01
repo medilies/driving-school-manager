@@ -34,10 +34,20 @@ class Pages extends Controller
     {
         $data = [
             'title' => 'Apropos',
-            'stylesheets_array' => [],
+            'stylesheets_array' => ['about'],
             'scripts_array' => [],
         ];
         $this->view('pages/about', $data);
+    }
+
+    public function code()
+    {
+        $data = [
+            'title' => 'Codes',
+            'stylesheets_array' => ["code"],
+            'scripts_array' => [],
+        ];
+        $this->view('pages/code', $data);
     }
 
     public function join()
