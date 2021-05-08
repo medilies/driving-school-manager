@@ -2,15 +2,15 @@
 /* Initialisations */
 /* ******************************************************* */
 :root {
-    --primary-color: #3ade04;
-    --primary-color1: #97fa05;
-    --primary-color2: #05faa4;
-    --primary-color3: #04de54;
-    --primary-color4: #11f523;
-    --complementary-color11: #cb1df5;
-    --complementary-color12: #8d1da8;
-    --complementary-color21: #a8371d;
-    --complementary-color22: #f53205;
+    --primary-color: #8d1da8;
+    --primary-color1: #7017bf;
+    --primary-color2: #3e16b5;
+    --primary-color3: #bf17a9;
+    --primary-color4: #b51650;
+    --complementary-color11: #14a81f;
+    --complementary-color12: #11f522;
+    --complementary-color21: #a89d25;
+    --complementary-color22: #f5e542;
     --red: #f00;
     --green: #0f0;
     --max-width: 1800px;
@@ -209,14 +209,14 @@ h5,
     font-weight: bold;
 }
 .colored-text2 {
-    color: var(--complementary-color12);
+    color: var(--complementary-color11);
     font-weight: bold;
 }
 .colored-text3 {
-    color: var(--complementary-color22);
+    color: var(--complementary-color21);
 }
 .colored-text4 {
-    color: var(--complementary-color21);
+    color: var(--complementary-color11);
 }
 
 .card {

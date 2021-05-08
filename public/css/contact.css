@@ -24,13 +24,13 @@ form > * {
 }
 input,
 textarea {
-    border-color: #04de54;
+    border-color: var(--complementary-color21);
 }
 #data p {
     font-size: 1.5rem;
 }
 .sp {
-    color: #8d1da8;
+    color: var(--complementary-color11);
     font-weight: bold;
 }
 footer {

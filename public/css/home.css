@@ -9,24 +9,28 @@
     color: #fff;
 }
 #hero h1 {
-    color: #f53205;
+    color: var(--complementary-color11);
 }
 #hero a {
     padding: 0.5rem 1rem;
-    color: #f53205;
-    border-color: #f53205;
+    color: var(--complementary-color11);
+    border-color: var(--complementary-color11);
 }
 #hero a:hover {
     padding: 0.5rem 1rem;
-    background-color: #f53205;
+    background-color: var(--complementary-color11);
     color: #fff;
 }
 
 #offre {
-    background: linear-gradient(77deg, #97fa05cc, #05faa4cc);
+    background: linear-gradient(
+        77deg,
+        var(--primary-color1),
+        var(--primary-color4)
+    );
     text-align: center;
     padding: 3rem;
-    color: #8d1da8;
+    color: var(--complementary-color21);
 }
 #offre div {
     display: flex;
@@ -50,7 +54,7 @@
     align-items: center;
 }
 #testamonial h2 {
-    color: #a8371d;
+    color: var(--complementary-color11);
     margin-top: 1rem;
 }
 #testamonial .card {
