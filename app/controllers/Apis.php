@@ -21,25 +21,17 @@ class Apis extends Controller
 
     public function join()
     {
-        if (($_FILES['usr_img']['name'] != "")) {
-            // Where the file is going to be stored
-            $target_dir = PROJECT_ROOT . '/public/assets/uploads/';
-            // $target_dir = PROJECT_ROOT . 'uploads/';
-            $file = $_FILES['usr_img']['name'];
-            $path = pathinfo($file);
-            $filename = $path['filename'];
-            $ext = $path['extension'];
-            $temp_name = $_FILES['usr_img']['tmp_name'];
-            $path_filename_ext = $target_dir . $filename . "." . $ext;
-
-            // Check if file already exists
-            if (file_exists($path_filename_ext)) {
-                echo "Sorry, file already exists.";
-            } else {
-                move_uploaded_file($temp_name, $path_filename_ext);
-                echo "Congratulations! File Uploaded Successfully.";
-            }
+        if ((empty($_FILES['client_img']['name']))) {
+            echo "il manque des fichers";
+            die;
         }
+
+        $email = $_POST['mail'];
+        $this->store_file('client_cni', $email);
+        $this->store_file('client_blood', $email);
+        $this->store_file('client_residence', $email);
+        $this->store_file('client_health_cert', $email);
+        $this->store_file('client_img', $email);
 
         $result = $this->Api->join($_POST);
         echo json_encode($result);
@@ -156,6 +148,30 @@ class Apis extends Controller
             return $mail->Send();
         } catch (PHPMailer\PHPMailer\Exception$e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
+    private function store_file($name, $email)
+    {
+        // Where the file is going to be stored
+        $target_dir = PROJECT_ROOT . "/public/assets/uploads/$email/";
+        if (!file_exists($target_dir)) {
+            mkdir($target_dir);
+        }
+
+        $file = $_FILES[$name]['name'];
+        $path = pathinfo($file);
+
+        $ext = $path['extension'];
+        $temp_name = $_FILES[$name]['tmp_name'];
+        $path_filename_ext = "$target_dir" . "$name.$ext";
+
+        // Check if file already exists
+        if (file_exists($path_filename_ext)) {
+            echo "$name file already exists.";
+        } else {
+            move_uploaded_file($temp_name, $path_filename_ext);
+            // echo "Congratulations! File Uploaded Successfully.";
         }
     }
 }

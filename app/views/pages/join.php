@@ -4,25 +4,46 @@
     <div class="form-card">
         <p class="mb1 colored-text4"> Créez votre compte de client  </p>
         <div id="msg"></div>
-        <form >
+        <form enctype="multipart/form-data">
 
-            <label for="lname"> <i class="fas fa-user-circle"></i>  Nom </label>
-            <input type="text" name="lname" required>
+            <div class="flex">
+            <div>
+                <label for="lname"> <i class="fas fa-user-circle"></i>  Nom </label>
+                <input type="text" name="lname" required>
 
-            <label for="fname"> <i class="fas fa-user-circle"></i>  Pénom   </label>
-            <input type="text" name="fname" required>
+                <label for="fname"> <i class="fas fa-user-circle"></i>  Pénom   </label>
+                <input type="text" name="fname" required>
 
-            <label for="bday">  <i class="fas fa-birthday-cake"></i>    Date de naissance   </label>
-            <input type="date" name="bday" required>
+                <label for="bday">  <i class="fas fa-birthday-cake"></i>    Date de naissance   </label>
+                <input type="date" name="bday" required>
 
-            <label for="phone"> <i class="fas fa-mobile-alt"></i>   Numéro de tel   </label>
-            <input type="tel" name="phone" required>
+                <label for="phone"> <i class="fas fa-mobile-alt"></i>   Numéro de tel   </label>
+                <input type="tel" name="phone" required>
 
-            <label for="mail">  <i class="fas fa-envelope"></i>   Email   </label>
-            <input type="email" name="mail" required>
+                <label for="mail">  <i class="fas fa-envelope"></i>   Email   </label>
+                <input type="email" name="mail" required>
 
-            <label for="pass">  Mot de passe    </label>
-            <input type="password" name="pass" autocomplete required>
+                <label for="pass">  Mot de passe    </label>
+                <input type="password" name="pass" autocomplete required>
+            </div>
+
+            <div class="ml1">
+                <label for="client_cni">CNI</label>
+                <input type="file" name="client_cni" required>
+
+                <label for="client_blood">Groupage</label>
+                <input type="file" name="client_blood" required>
+
+                <label for="client_residence">Réidence</label>
+                <input type="file" name="client_residence" required>
+
+                <label for="client_health_cert">Certificat médical</label>
+                <input type="file" name="client_health_cert" required>
+
+                <label for="client_img">Photo</label>
+                <input type="file" name="client_img" required>
+            </div>
+            </div>
 
             <button type="submit">  S'inscrire  </button>
 
