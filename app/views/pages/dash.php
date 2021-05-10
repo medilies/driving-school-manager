@@ -1,6 +1,72 @@
+<?php
+// CARD GENERATOR
+function card($exam, $exam_type, $card_cover_class)
+{
+    switch ($exam['result']) {
+        case 'En attente':
+            $border_result = "waitn";
+            break;
+        case 'Réussit':
+            $border_result = "win";
+            break;
+        case 'Raté':
+            $border_result = "loss";
+            break;
+    }
+    ?>
 <?php ob_start();?>
+<div class="card2 inline mt05 mb05 ml1 <?=$border_result?>">
+
+    <div class="<?=$card_cover_class?>"></div>
+
+    <div>
+    <p >    La date d'éxamen <span class="colored-text2">   <?=$exam['planned_on']?>   </span></p>
+    <p class="ml1"> Etat: <span class="colored-text2">   <?=get_exam_icon($exam['result']) . ' ' . $exam['result']?>   </span></p>
+
+    <?php if ($exam['result'] === "En attente"): ?>
+        <form action="/apis/exam_result" method="post">
+            <input type="hidden" name="exam_id" value="<?=$exam['exam_id']?>">
+            <input type="hidden" name="exam_type" value="<?=$exam_type?>">
+            <label for="result">  Résultat    </label>
+            <select name="result">
+                <option value="Réussit">    Réussit </option>
+                <option value="Raté">   Raté    </option>
+            </select>
+            <button type="submit">  Confirmer   </button>
+        </form>
+    <?php endif?>
+    </div>
+
+</div>
+<?php $card = ob_get_clean();?>
+<?php
+echo $card;
+}
+?>
 
 <?php
+// CARD GENERATOR
+function next_exam_form($client, $exam_type)
+{
+    ?>
+<?php ob_start();?>
+<form action="/apis/next_exam" method="post">
+    <input type="hidden" name="client_id" value="<?=$client['client_id']?>">
+    <input type="hidden" name="client_mail" value="<?=$client['mail']?>">
+    <input type="hidden" name="exam_type" value="<?=$exam_type?>">
+    <label for="date" class="inline">   <i class='fas fa-calendar-alt'></i>  La date du prochain éxamen <?=$exam_type?>  </label>
+    <input type="date" name="date" class="inline w11" required>
+    <button type="submit" class="inline w7">    Confirmer   </button>
+</form>
+<?php $form = ob_get_clean();?>
+
+<?php
+echo $form;
+}
+?>
+
+<?php
+// ICON SELECTOR
 function get_exam_icon($result)
 {
     switch ($result) {
@@ -13,6 +79,8 @@ function get_exam_icon($result)
     }
 }
 ?>
+
+<?php ob_start();?>
 
 <?php
 foreach ($data['data'] as $key => $value) {
@@ -63,121 +131,40 @@ for ($i = 0; $i < sizeof($clients); $i++) {
     <p> <i class="fas fa-envelope"></i> <?=$client['mail']?></p>
     <p> <i class="fas fa-mobile-alt"></i> <?=$client['phone']?></p>
 
-    <!--  -->
-    <h4 class="colored-text1">  <i class='fas fa-book'></i>   Code:</h4>
+    <!-- <h4 class="colored-text1">  <i class='fas fa-book'></i>   Code:</h4> -->
 
     <?php foreach ($code as $exam): ?>
         <?php if ($client['client_id'] === $exam['client_id']): ?>
-
-
-            <div class="card inline wp1 mt05 mb05 ml1">
-
-                <p >    La date d'éxamen <span class="colored-text2">   <?=$exam['planned_on']?>   </span></p>
-                <p class="ml1"> Etat: <span class="colored-text2">   <?=get_exam_icon($exam['result']) . ' ' . $exam['result']?>   </span></p>
-
-                <?php if ($exam['result'] === "En attente"): ?>
-                <form action="/apis/exam_result" method="post">
-                        <input type="hidden" name="exam_id" value="<?=$exam['exam_id']?>">
-                        <input type="hidden" name="exam_type" value="code">
-                        <label for="result">  Résultat    </label>
-                        <select name="result">
-                            <option value="Réussit">    Réussit </option>
-                            <option value="Raté">   Raté    </option>
-                        </select>
-                        <button type="submit">  Confirmer   </button>
-                    </form>
-                <?php endif?>
-
-            </div>
-
+            <?php card($exam, 'code', 'code')?>
         <?php endif;?>
     <?php endforeach;?>
 
     <?php if (!$client['code_pass']): ?>
-        <form action="/apis/next_exam" method="post">
-            <input type="hidden" name="client_id" value="<?=$client['client_id']?>">
-            <input type="hidden" name="client_mail" value="<?=$client['mail']?>">
-            <input type="hidden" name="exam_type" value="code">
-            <label for="date" class="inline">   <i class='fas fa-calendar-alt'></i>  La date du prochain éxamen code  </label>
-            <input type="date" name="date" class="inline w11" required>
-            <button type="submit" class="inline w7">    Confirmer   </button>
-        </form>
+        <?php next_exam_form($client, 'code')?>
     <?php endif;?>
-<!--  -->
-    <h4 class="colored-text1">  <i class='fas fa-car-side'></i>  Créno:</h4>
+
+    <!-- <h4 class="colored-text1">  <i class='fas fa-car-side'></i>  Créno:</h4> -->
 
     <?php foreach ($creno as $exam): ?>
         <?php if ($client['client_id'] === $exam['client_id']): ?>
-
-            <div class="card inline wp1 mt05 mb05 ml1">
-                <p >    La date d'éxamen <span class="colored-text2">   <?=$exam['planned_on']?>   </span></p>
-                <p class="ml1"> Etat: <span class="colored-text2">  <?=get_exam_icon($exam['result']) . ' ' . $exam['result']?>   </span></p>
-
-                <?php if ($exam['result'] === "En attente"): ?>
-                <form action="/apis/exam_result" method="post">
-                        <input type="hidden" name="exam_id" value="<?=$exam['exam_id']?>">
-                        <input type="hidden" name="exam_type" value="creno">
-                        <label for="result">  Résultat    </label>
-                        <select name="result">
-                            <option value="Réussit">    Réussit </option>
-                            <option value="Raté">   Raté    </option>
-                        </select>
-                        <button type="submit">  Confirmer   </button>
-                    </form>
-                <?php endif?>
-
-            </div>
-
+            <?php card($exam, 'creno', 'creno')?>
         <?php endif;?>
     <?php endforeach;?>
 
     <?php if (!$client['creno_pass'] && $client['code_pass']): ?>
-        <form  action="/apis/next_exam" method="post">
-            <input type="hidden" name="client_id" value="<?=$client['client_id']?>">
-            <input type="hidden" name="client_mail" value="<?=$client['mail']?>">
-            <input type="hidden" name="exam_type" value="creno">
-            <label for="date" class="inline">   <i class='fas fa-calendar-alt'></i>   La date du prochain éxamen créno  </label>
-            <input type="date" name="date" class="inline w11" required>
-            <button type="submit" class="inline w7">    Confirmer   </button>
-        </form>
+        <?php next_exam_form($client, 'creno')?>
     <?php endif;?>
-<!--  -->
-    <h4 class="colored-text1">  <i class='fas fa-car-alt'></i>   Circuit:</h4>
+
+    <!-- <h4 class="colored-text1">  <i class='fas fa-car-alt'></i>   Circuit:</h4> -->
 
     <?php foreach ($circuit as $exam): ?>
         <?php if ($client['client_id'] === $exam['client_id']): ?>
-
-            <div class="card inline wp1 mt05 mb05 ml1">
-                <p >    La date d'éxamen <span class="colored-text2">   <?=$exam['planned_on']?>   </span></p>
-                <p class="ml1"> Etat: <span class="colored-text2">  <?=get_exam_icon($exam['result']) . ' ' . $exam['result']?>   </span></p>
-
-                <?php if ($exam['result'] === "En attente"): ?>
-                <form action="/apis/exam_result" method="post">
-                        <input type="hidden" name="exam_id" value="<?=$exam['exam_id']?>">
-                        <input type="hidden" name="exam_type" value="circuit">
-                        <label for="result">  Résultat    </label>
-                        <select name="result">
-                            <option value="Réussit">    Réussit </option>
-                            <option value="Raté">   Raté    </option>
-                        </select>
-                        <button type="submit">  Confirmer   </button>
-                    </form>
-                <?php endif?>
-
-            </div>
-
+            <?php card($exam, 'circuit', 'circuit')?>
         <?php endif;?>
     <?php endforeach;?>
 
     <?php if (!$client['circuit_pass'] && $client['creno_pass'] && $client['code_pass']): ?>
-        <form action="/apis/next_exam" method="post">
-            <input type="hidden" name="client_id" value="<?=$client['client_id']?>">
-            <input type="hidden" name="client_mail" value="<?=$client['mail']?>">
-            <input type="hidden" name="exam_type" value="circuit">
-            <label for="date" class="inline">   <i class='fas fa-calendar-alt'></i>   La date du prochain éxamen circuit  </label>
-            <input type="date" name="date" class="inline w11" required>
-            <button type="submit" class="inline w7">    Confirmer   </button>
-        </form>
+        <?php next_exam_form($client, 'circuit')?>
     <?php endif;?>
     <hr>
 

@@ -21,6 +21,26 @@ class Apis extends Controller
 
     public function join()
     {
+        if (($_FILES['usr_img']['name'] != "")) {
+            // Where the file is going to be stored
+            $target_dir = PROJECT_ROOT . '/public/assets/uploads/';
+            // $target_dir = PROJECT_ROOT . 'uploads/';
+            $file = $_FILES['usr_img']['name'];
+            $path = pathinfo($file);
+            $filename = $path['filename'];
+            $ext = $path['extension'];
+            $temp_name = $_FILES['usr_img']['tmp_name'];
+            $path_filename_ext = $target_dir . $filename . "." . $ext;
+
+            // Check if file already exists
+            if (file_exists($path_filename_ext)) {
+                echo "Sorry, file already exists.";
+            } else {
+                move_uploaded_file($temp_name, $path_filename_ext);
+                echo "Congratulations! File Uploaded Successfully.";
+            }
+        }
+
         $result = $this->Api->join($_POST);
         echo json_encode($result);
         die;
@@ -78,6 +98,8 @@ class Apis extends Controller
                 echo "nouveau exam enregistré";
                 echo "<br>";
                 echo "email: $mail_sent";
+
+                Utility::redirect('/pages/dash');
             } else if ($next_exam === false) {
                 echo "le client a dejé un exament en attente";
             }
@@ -92,6 +114,7 @@ class Apis extends Controller
             $result = $this->Api->exam_result($_POST);
             if ($result === true) {
                 echo "Résultat enregistré";
+                Utility::redirect('/pages/dash');
             } else if ($result === false) {
                 echo "erreur";
             }

@@ -552,3 +552,30 @@ tr:nth-child(2n + 3).bg-red-l,
     padding: 2rem 1rem;
     border: 1px solid var(--complementary-color21);
 }
+.card2 {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 0 0 9px 9px;
+    background: #fff;
+}
+.code {
+    background: url(/assets/img/code.jpg) no-repeat center center / cover;
+}
+.creno {
+    background: url(/assets/img/creno.jpg) no-repeat center center / cover;
+}
+.circuit {
+    background: url(/assets/img/circuit.jpg) no-repeat center center / cover;
+}
+.card2 > div:first-child {
+    height: 5rem;
+}
+.card2 > div:last-child {
+    padding: 1rem;
+}
+.loss {
+    border: 2px var(--red) solid;
+}
+.win {
+    border: 2px var(--green) solid;
+}
