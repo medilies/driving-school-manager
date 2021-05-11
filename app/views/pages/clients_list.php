@@ -2,9 +2,7 @@
 
 <?php
 $clients = $data['clients'];
-// var_dump($data['clients'])
 ?>
-
 
 <table class="mt1 mr1 ml1">
     <tr>

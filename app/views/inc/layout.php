@@ -20,13 +20,15 @@
 <body>
 
 <header>
-    <?php if (!isset($_SESSION['id']) || empty($_SESSION['id'])): ?>
-        <nav>
-            <div class="max-w flex-spaced p1">
+    <nav>
+        <div class="max-w flex-spaced p1">
+            <div class="flex">
+                <a href="/" class="mr1 ml1"> Auto école   </a>
+            </div>
+
+            <?php if (!isset($_SESSION['id']) || empty($_SESSION['id'])): ?>
+
                 <div class="flex">
-                </div>
-                <div class="flex">
-                    <a href="/" class="mr1 ml1"> Auto école   </a>
                     <a href="/" class="mr1 ml1"> Acceuil   </a>
                     <a href="/pages/about" class="mr1 ml1">  Apropos </a>
                     <a href="/pages/contact" class="mr1 ml1">  Contact </a>
@@ -35,30 +37,34 @@
                     <a href="/pages/join" class="mr1 ml1">  Rejoindre </a>
                     <a href="/pages/admin" class="mr1 ml1">  Admin </a>
                 </div>
-            </div>
-        </nav>
-    <?php elseif (isset($_SESSION['id']) && !empty($_SESSION['id'])): ?>
-        <nav>
-            <div class="max-w flex-spaced p1">
+
+
+            <?php elseif (isset($_SESSION['id']) && !empty($_SESSION['id'])): ?>
+
                 <div class="flex">
-                </div>
-                <div class="flex">
-                    <a href="/" class="mr1 ml1"> Auto école   </a>
                     <a href="/" class="mr1 ml1"> Acceuil   </a>
                     <a href="/pages/about" class="mr1 ml1">  Apropos </a>
                     <a href="/pages/contact" class="mr1 ml1">  Contact </a>
                     <a href="/pages/code" class="mr1 ml1">  Codes </a>
+
                     <?php if ($_SESSION['id'] === "admin"): ?>
+
                         <a href="/pages/dash" class="mr1 ml1"> Examens    </a>
                         <a href="/pages/clients_list" class="mr1 ml1"> Dossiers    </a>
+
                     <?php else: ?>
+
                         <a href="/pages/agenda" class="mr1 ml1"> <?=$_SESSION['lname']?>    </a>
+
                     <?php endif;?>
+
                     <a href="/apis/logout" class="mr1 ml1">  <i class='fas fa-sign-out-alt'></i>   </a>
                 </div>
-            </div>
-        </nav>
-    <?php endif;?>
+
+            <?php endif;?>
+
+        </div>
+    </nav>
 </header>
 
 <main>
