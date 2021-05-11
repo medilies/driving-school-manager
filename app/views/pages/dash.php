@@ -1,7 +1,6 @@
 <?php require_once PROJECT_ROOT . '/app/views/inc/exam_card.php';?>
 <?php require_once PROJECT_ROOT . '/app/views/inc/next_exam_form.php';?>
 
-<?php ob_start();?>
 
 <?php
 foreach ($data['data'] as $key => $value) {
@@ -45,6 +44,7 @@ for ($i = 0; $i < sizeof($clients); $i++) {
 }
 ?>
 
+<?php ob_start();?>
 <div class="p1">
 <?php foreach ($clients as $client): ?>
     <h3 class="colored-text3">  <i class="fas fa-user-circle"></i> <?=$client['lname'] . ' ' . $client['fname']?></h3>

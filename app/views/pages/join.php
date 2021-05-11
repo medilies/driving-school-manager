@@ -29,19 +29,19 @@
 
             <div class="ml1">
                 <label for="client_cni">CNI</label>
-                <input type="file" name="client_cni" required>
+                <input type="file" name="client_cni" accept="image/png" required>
 
                 <label for="client_blood">Groupage</label>
-                <input type="file" name="client_blood" required>
+                <input type="file" name="client_blood" accept="image/png" required>
 
                 <label for="client_residence">Réidence</label>
-                <input type="file" name="client_residence" required>
+                <input type="file" name="client_residence" accept="image/png" required>
 
                 <label for="client_health_cert">Certificat médical</label>
-                <input type="file" name="client_health_cert" required>
+                <input type="file" name="client_health_cert" accept="image/png" required>
 
                 <label for="client_img">Photo</label>
-                <input type="file" name="client_img" required>
+                <input type="file" name="client_img" accept="image/png" required>
             </div>
             </div>
 

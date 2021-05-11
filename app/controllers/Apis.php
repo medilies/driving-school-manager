@@ -103,16 +103,17 @@ class Apis extends Controller
     public function exam_result()
     {
         if ($_SESSION['id'] === "admin") {
-            $result = $this->Api->exam_result($_POST);
-            if ($result === true) {
-                echo "Résultat enregistré";
-                Utility::redirect('/pages/dash');
-            } else if ($result === false) {
-                echo "erreur";
-            }
-        } else {
             Utility::redirect('/');
         }
+
+        $result = $this->Api->exam_result($_POST);
+        if ($result === true) {
+            echo "Résultat enregistré";
+            Utility::redirect('/pages/dash');
+        } else if ($result === false) {
+            echo "erreur";
+        }
+
     }
 
     public function logout()
@@ -120,6 +121,24 @@ class Apis extends Controller
         session_unset();
         session_destroy();
         Utility::redirect('/');
+    }
+
+    public function delete_client($client_id)
+    {
+        if ($_SESSION['id'] !== "admin") {
+            Utility::redirect('/');
+        }
+
+        $result = $this->Api->delete_client($client_id);
+        if ($result === true) {
+            echo "client supprimé";
+            Utility::redirect('/pages/clients_list');
+            die;
+        } else {
+            echo "erreur";
+            die;
+        }
+
     }
 
     private function send_mail($to, $msg)

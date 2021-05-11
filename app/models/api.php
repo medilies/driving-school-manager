@@ -129,4 +129,23 @@ class Api extends Database
             return $e->getMessage();
         }
     }
+
+    public function delete_client($client_id)
+    {
+        $query1 = "DELETE FROM clients WHERE client_id = :client_id";
+
+        try {
+
+            $exam = $this->Root->prepare($query1);
+            $exam->bindParam(':client_id', $client_id, PDO::PARAM_STR);
+
+            if ($exam->execute()) {
+                return true;
+            }
+
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
 }

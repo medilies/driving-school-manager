@@ -128,4 +128,22 @@ class Pages extends Controller
         $this->view('pages/dash', $data);
     }
 
+    public function clients_list()
+    {
+        if (!isset($_SESSION['id']) || $_SESSION['id'] !== "admin") {
+            Utility::redirect('/');
+        }
+
+        $clients = $this->page->clients()['clients'];
+
+        $data = [
+            'title' => 'Agenda',
+            'stylesheets_array' => [],
+            'scripts_array' => [],
+            'clients' => $clients,
+        ];
+
+        $this->view('pages/clients_list', $data);
+    }
+
 }

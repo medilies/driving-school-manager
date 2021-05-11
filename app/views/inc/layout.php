@@ -49,7 +49,8 @@
                     <a href="/pages/contact" class="mr1 ml1">  Contact </a>
                     <a href="/pages/code" class="mr1 ml1">  Codes </a>
                     <?php if ($_SESSION['id'] === "admin"): ?>
-                        <a href="/pages/dash" class="mr1 ml1"> <?=$_SESSION['lname']?>    </a>
+                        <a href="/pages/dash" class="mr1 ml1"> Examens    </a>
+                        <a href="/pages/clients_list" class="mr1 ml1"> Dossiers    </a>
                     <?php else: ?>
                         <a href="/pages/agenda" class="mr1 ml1"> <?=$_SESSION['lname']?>    </a>
                     <?php endif;?>
