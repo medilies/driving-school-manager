@@ -168,7 +168,8 @@ class Apis extends Controller
 
         // Check if file already exists
         if (file_exists($path_filename_ext)) {
-            echo "$name file already exists.";
+            echo json_encode("$name éxiste déja dans le serveur!");
+            die;
         } else {
             move_uploaded_file($temp_name, $path_filename_ext);
             // echo "Congratulations! File Uploaded Successfully.";
