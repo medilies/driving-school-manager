@@ -68,7 +68,7 @@ class Apis extends Controller
     {
         if ($_POST['username'] === "admin" && $_POST['pass'] === "admin") {
 
-            $_SESSION['id'] = "admin";
+            $_SESSION['id'] = 0;
             $_SESSION['lname'] = "admin";
 
             echo json_encode("authentification réussite");
@@ -82,7 +82,7 @@ class Apis extends Controller
 
     public function next_exam()
     {
-        if ($_SESSION['id'] === "admin") {
+        if ($_SESSION['id'] === 0) {
             $next_exam = $this->Api->next_exam($_POST);
             if ($next_exam === true) {
                 $msg = "Vous aurez un éxamen le {$_POST['date']}";
@@ -102,7 +102,7 @@ class Apis extends Controller
 
     public function exam_result()
     {
-        if ($_SESSION['id'] === "admin") {
+        if ($_SESSION['id'] === 0) {
             Utility::redirect('/');
         }
 
@@ -125,7 +125,7 @@ class Apis extends Controller
 
     public function delete_client($client_id)
     {
-        if ($_SESSION['id'] !== "admin") {
+        if ($_SESSION['id'] !== 0) {
             Utility::redirect('/');
         }
 

@@ -45,7 +45,7 @@ class Page extends Database
         $query1 = "SELECT * FROM exam_code";
         $query2 = "SELECT * FROM exam_creno";
         $query3 = "SELECT * FROM exam_circuit";
-        $query4 = "SELECT * FROM clients";
+        $query4 = "SELECT * FROM clients WHERE client_id != 0";
 
         try {
             $code = $this->Root->prepare($query1);
@@ -69,6 +69,25 @@ class Page extends Database
                 'circuit' => $circuit,
                 'clients' => $clients,
             ];
+
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
+    public function posts()
+    {
+        $query1 = "SELECT * FROM posts";
+
+        try {
+            $posts = $this->Root->prepare($query1);
+
+            $posts->execute();
+
+            $posts = $posts->fetchAll();
+
+            return $posts;
 
         } catch (PDOException $e) {
 

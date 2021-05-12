@@ -94,14 +94,14 @@ class Pages extends Controller
 
     public function agenda()
     {
-        if (!isset($_SESSION['id']) || empty($_SESSION['id']) || $_SESSION['id'] === 'admin') {
+        if (!isset($_SESSION['id']) || empty($_SESSION['id']) || $_SESSION['id'] === 0) {
             Utility::redirect('/');
         }
 
         $exams = $this->page->exams();
 
         $data = [
-            'title' => 'Agenda',
+            'title' => 'Examens',
             'stylesheets_array' => [],
             'scripts_array' => [],
             'data' => $exams,
@@ -112,14 +112,14 @@ class Pages extends Controller
 
     public function dash()
     {
-        if (!isset($_SESSION['id']) || $_SESSION['id'] !== "admin") {
+        if (!isset($_SESSION['id']) || $_SESSION['id'] !== 0) {
             Utility::redirect('/');
         }
 
         $clients = $this->page->clients();
 
         $data = [
-            'title' => 'Agenda',
+            'title' => 'Examens',
             'stylesheets_array' => [],
             'scripts_array' => [],
             'data' => $clients,
@@ -130,20 +130,38 @@ class Pages extends Controller
 
     public function clients_list()
     {
-        if (!isset($_SESSION['id']) || $_SESSION['id'] !== "admin") {
+        if (!isset($_SESSION['id']) || $_SESSION['id'] !== 0) {
             Utility::redirect('/');
         }
 
         $clients = $this->page->clients()['clients'];
 
         $data = [
-            'title' => 'Agenda',
+            'title' => 'Dossiers',
             'stylesheets_array' => [],
             'scripts_array' => [],
             'clients' => $clients,
         ];
 
         $this->view('pages/clients_list', $data);
+    }
+
+    public function forum()
+    {
+        if (!isset($_SESSION['id'])) {
+            Utility::redirect('/');
+        }
+
+        $posts = $this->page->posts();
+
+        $data = [
+            'title' => 'forum',
+            'stylesheets_array' => [],
+            'scripts_array' => [],
+            'posts' => $posts,
+        ];
+
+        $this->view('pages/forum', $data);
     }
 
 }

@@ -9,8 +9,6 @@ class Router
     {
         $url = $this->getUrl();
 
-        $this->access_control(implode("/", $url));
-
         /* =========================================================== */
         /*                Instaniate a controller                      */
         /* =========================================================== */
@@ -87,52 +85,4 @@ class Router
         return $default_url;
     }
 
-    /**
-     * control access for URLs with:
-     * - user $_SESSION['id'] set
-     * - user $_SESSION['id'] not set
-     *
-     * ALSO reposnd with 404 page
-     *
-     * @param string $url formated as "Controller/Method"
-     */
-    private function access_control(string $url): void
-    {
-
-        $open_urls = [
-            "pages/index",
-            "pages/home",
-            "pages/about",
-            "pages/contact",
-        ];
-
-        $login_required_urls = [
-
-        ];
-        $login_required_fallbackpage = "pages/index";
-
-        $no_login_required_urls = [
-
-        ];
-        $no_login_required_fallbackpage = "pages/index";
-
-        // if (in_array($url, $open_urls)) {
-        //     return;
-        // }
-        // //*
-        // elseif (!isset($_SESSION['id']) && in_array($url, $login_required_urls)) {
-        //     Utility::redirect($login_required_fallbackpage);
-        //     die;
-        // }
-        // //*
-        // elseif (isset($_SESSION['id']) && !empty($_SESSION['id']) && in_array($url, $no_login_required_urls)) {
-        //     Utility::redirect($no_login_required_fallbackpage);
-        //     die;
-        // }
-        // //*
-        // elseif (!in_array($url, $login_required_urls) && !in_array($url, $no_login_required_urls)) {
-        //     echo "Le lien est incorrect :/ <br> ERR_CODE 404";
-        //     die;
-        // }
-    }
 }

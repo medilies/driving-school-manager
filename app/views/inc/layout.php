@@ -25,41 +25,37 @@
             <div class="flex">
                 <a href="/" class="mr1 ml1"> Auto école   </a>
             </div>
+            <div class="flex">
+                <a href="/" class="mr1 ml1"> Acceuil   </a>
+                <a href="/pages/about" class="mr1 ml1">  Apropos </a>
+                <a href="/pages/contact" class="mr1 ml1">  Contact </a>
+                <a href="/pages/code" class="mr1 ml1">  Codes </a>
 
-            <?php if (!isset($_SESSION['id']) || empty($_SESSION['id'])): ?>
+            <?php if (!isset($_SESSION['id'])): ?>
 
-                <div class="flex">
-                    <a href="/" class="mr1 ml1"> Acceuil   </a>
-                    <a href="/pages/about" class="mr1 ml1">  Apropos </a>
-                    <a href="/pages/contact" class="mr1 ml1">  Contact </a>
-                    <a href="/pages/code" class="mr1 ml1">  Codes </a>
-                    <a href="/pages/login" class="mr1 ml1"> Connecter   </a>
-                    <a href="/pages/join" class="mr1 ml1">  Rejoindre </a>
-                    <a href="/pages/admin" class="mr1 ml1">  Admin </a>
-                </div>
+                <a href="/pages/login" class="mr1 ml1"> Connecter   </a>
+                <a href="/pages/join" class="mr1 ml1">  Rejoindre </a>
+                <a href="/pages/admin" class="mr1 ml1">  Admin </a>
+            </div>
 
 
-            <?php elseif (isset($_SESSION['id']) && !empty($_SESSION['id'])): ?>
+            <?php elseif (isset($_SESSION['id'])): ?>
 
-                <div class="flex">
-                    <a href="/" class="mr1 ml1"> Acceuil   </a>
-                    <a href="/pages/about" class="mr1 ml1">  Apropos </a>
-                    <a href="/pages/contact" class="mr1 ml1">  Contact </a>
-                    <a href="/pages/code" class="mr1 ml1">  Codes </a>
+                <a href="/pages/forum" class="mr1 ml1"> Forum    </a>
 
-                    <?php if ($_SESSION['id'] === "admin"): ?>
+            <?php if ($_SESSION['id'] === 0): ?>
 
-                        <a href="/pages/dash" class="mr1 ml1"> Examens    </a>
-                        <a href="/pages/clients_list" class="mr1 ml1"> Dossiers    </a>
+                <a href="/pages/dash" class="mr1 ml1"> Examens    </a>
+                <a href="/pages/clients_list" class="mr1 ml1"> Dossiers    </a>
 
-                    <?php else: ?>
+            <?php else: ?>
 
-                        <a href="/pages/agenda" class="mr1 ml1"> <?=$_SESSION['lname']?>    </a>
+                <a href="/pages/agenda" class="mr1 ml1"> <?=$_SESSION['lname']?>    </a>
 
-                    <?php endif;?>
+            <?php endif;?>
 
-                    <a href="/apis/logout" class="mr1 ml1">  <i class='fas fa-sign-out-alt'></i>   </a>
-                </div>
+                <a href="/apis/logout" class="mr1 ml1">  <i class='fas fa-sign-out-alt'></i>   </a>
+            </div>
 
             <?php endif;?>
 

@@ -2,7 +2,6 @@
 <?php require_once PROJECT_ROOT . '/app/views/inc/next_exam_form.php';?>
 <?php require_once PROJECT_ROOT . '/app/views/inc/cover.php';?>
 
-
 <?php
 foreach ($data['data'] as $key => $value) {
     $$key = $value;
@@ -47,7 +46,7 @@ for ($i = 0; $i < sizeof($clients); $i++) {
 
 <?php ob_start();?>
 
-<?=cover("Planning d'éxamens et résultats")?>
+<?=cover("Planning d'éxamens - Résultats d'éxamens")?>
 
 <div class="p1">
 <?php foreach ($clients as $client): ?>

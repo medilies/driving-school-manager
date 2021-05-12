@@ -40,7 +40,7 @@ function card($exam, $exam_type, $card_cover_class)
     <p class="ml1"> Etat: <span class="colored-text2">   <?=get_exam_icon($exam['result']) . ' ' . $exam['result']?>   </span></p>
 
     <?php if ($exam['result'] === "En attente"): ?>
-    <?php if ($_SESSION['id'] === "admin"): ?>
+    <?php if ($_SESSION['id'] === 0): ?>
 
         <form action="/apis/exam_result" method="post">
             <input type="hidden" name="exam_id" value="<?=$exam['exam_id']?>">
