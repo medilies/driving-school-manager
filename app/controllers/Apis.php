@@ -158,6 +158,25 @@ class Apis extends Controller
         }
     }
 
+    public function add_comment()
+    {
+        if (!isset($_SESSION['id'])) {
+            Utility::redirect('/');
+        }
+
+        $post_id = $_POST['post_id'];
+
+        $result = $this->Api->add_comment($_POST);
+        if ($result === true) {
+            echo "commentaire ajouté";
+            Utility::redirect("/pages/post/$post_id");
+            die;
+        } else {
+            echo "erreur";
+            die;
+        }
+    }
+
     private function send_mail($to, $msg)
     {
         require_once PROJECT_ROOT . '/app/PHPMailer/src/Exception.php';

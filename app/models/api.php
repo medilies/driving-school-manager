@@ -172,4 +172,27 @@ class Api extends Database
             return $e->getMessage();
         }
     }
+
+    public function add_comment($comment)
+    {
+        $comment_content = $comment['comment_content'];
+        $post_id = $comment['post_id'];
+        $client_id = $_SESSION['id'];
+
+        $query1 = 'INSERT INTO comments(comment_content, post_id, client_id)
+            VALUES(:comment_content, :post_id, :client_id)';
+
+        try {
+            $client = $this->Root->prepare($query1);
+            $client->bindParam(':comment_content', $comment_content, PDO::PARAM_STR);
+            $client->bindParam(':client_id', $client_id, PDO::PARAM_INT);
+            $client->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+
+            if ($client->execute()) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }

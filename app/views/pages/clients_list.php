@@ -48,11 +48,11 @@ $clients = $data['clients'];
         <td><?=$client['bday']?></td>
         <td><?=$client['mail']?></td>
         <td><?=$client['phone']?></td>
-        <td><a href="<?=get_file_path("client_img", $client['mail'])?>" target="_blanc" class="colored-text4">  Photo   </a></td>
-        <td><a href="<?=get_file_path("client_cni", $client['mail'])?>" target="_blanc" class="colored-text4">  CNI   </a></td>
-        <td><a href="<?=get_file_path("client_health_cert", $client['mail'])?>" target="_blanc" class="colored-text4">  Certificat médicale   </a></td>
-        <td><a href="<?=get_file_path("client_blood", $client['mail'])?>" target="_blanc" class="colored-text4">  Groupage   </a></td>
-        <td><a href="<?=get_file_path("client_residence", $client['mail'])?>" target="_blanc" class="colored-text4">  Résidence   </a></td>
+        <td><a href="<?=get_file_path("client_img", $client['mail'])?>" target="_blanc" class="colored-text4 u">  Photo   </a></td>
+        <td><a href="<?=get_file_path("client_cni", $client['mail'])?>" target="_blanc" class="colored-text4 u">  CNI   </a></td>
+        <td><a href="<?=get_file_path("client_health_cert", $client['mail'])?>" target="_blanc" class="colored-text4 u">  Certificat médicale   </a></td>
+        <td><a href="<?=get_file_path("client_blood", $client['mail'])?>" target="_blanc" class="colored-text4 u">  Groupage   </a></td>
+        <td><a href="<?=get_file_path("client_residence", $client['mail'])?>" target="_blanc" class="colored-text4 u">  Résidence   </a></td>
         <td><a href="/apis/delete_client/<?=$client['client_id']?>" class="colored-text1">  <i class="fas fa-trash-alt fa-2x"></i>   </a></td>
     </tr>
     <?php endforeach;?>

@@ -57,7 +57,8 @@ label {
 
 button,
 input,
-select {
+select,
+textarea {
     box-sizing: content-box;
     font-size: var(--header5-size);
     line-height: var(--header5-line-h);
@@ -95,13 +96,20 @@ button:hover {
 }
 
 input,
-select {
+select,
+textarea {
     border: var(--primary-color) solid 2px;
 }
 
 input:focus,
+textarea:focus,
 button:focus {
     outline: none;
+}
+
+textarea {
+    font-size: 12px;
+    width: 30rem;
 }
 
 table {
@@ -344,6 +352,9 @@ tr:nth-child(2n + 3).bg-red-l,
 .w25 {
     width: 25rem;
 }
+.w800px {
+    width: 800px;
+}
 .wp1 {
     width: fit-content;
     width: max-content;
@@ -408,6 +419,9 @@ tr:nth-child(2n + 3).bg-red-l,
 }
 .mb05 {
     margin-bottom: 0.5rem;
+}
+.ml05 {
+    margin-left: 0.5rem;
 }
 .m1 {
     margin: 1rem;
@@ -593,4 +607,14 @@ tr:nth-child(2n + 3).bg-red-l,
 }
 .win {
     border: 2px var(--green) solid;
+}
+
+.post-card {
+    padding: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 4px;
+    background: #fff;
+    width: 1000px;
+    margin: 1rem;
 }

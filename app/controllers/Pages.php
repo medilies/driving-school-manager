@@ -164,4 +164,22 @@ class Pages extends Controller
         $this->view('pages/forum', $data);
     }
 
+    public function post($post_id)
+    {
+        if (!isset($_SESSION['id'])) {
+            Utility::redirect('/');
+        }
+
+        $post = $this->page->post($post_id);
+
+        $data = [
+            'title' => 'post',
+            'stylesheets_array' => [],
+            'scripts_array' => [],
+            'post' => $post,
+        ];
+
+        $this->view('pages/post', $data);
+    }
+
 }

@@ -97,4 +97,40 @@ class Page extends Database
             return $e->getMessage();
         }
     }
+
+    public function post($post_id)
+    {
+        $post_id = intval($post_id);
+
+        $query1 = "SELECT * FROM posts
+            JOIN clients ON posts.client_id = clients.client_id
+            WHERE post_id = $post_id
+        ";
+
+        $query2 = "SELECT * FROM comments
+            JOIN clients ON comments.client_id = clients.client_id
+            WHERE post_id = $post_id
+            ORDER BY comments.comment_id ASC
+        ";
+
+        try {
+            $post = $this->Root->prepare($query1);
+            $comments = $this->Root->prepare($query2);
+
+            $post->execute();
+            $comments->execute();
+
+            $post = $post->fetch();
+            $comments = $comments->fetchAll();
+
+            return [
+                'post' => $post,
+                'comments' => $comments,
+            ];
+
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
 }
