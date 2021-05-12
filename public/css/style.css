@@ -142,6 +142,21 @@ nav {
     font-weight: bold;
 }
 
+.cover {
+    background: url(/assets/img/cover.jpg) no-repeat center center / cover;
+    height: 250px;
+}
+.cover > div {
+    height: 100%;
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--complementary-color22);
+    opacity: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 main {
     min-height: 85vh;
 }
