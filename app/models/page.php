@@ -78,7 +78,10 @@ class Page extends Database
 
     public function posts()
     {
-        $query1 = "SELECT * FROM posts";
+        $query1 = "SELECT * FROM posts
+            JOIN clients ON posts.client_id = clients.client_id
+            ORDER BY posts.post_id DESC
+        ";
 
         try {
             $posts = $this->Root->prepare($query1);

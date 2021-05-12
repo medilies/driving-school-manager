@@ -148,4 +148,28 @@ class Api extends Database
             return $e->getMessage();
         }
     }
+
+    public function add_post($post)
+    {
+
+        $post_title = $post['post_title'];
+        $post_content = $post['post_content'];
+        $client_id = $_SESSION['id'];
+
+        $query1 = 'INSERT INTO posts(post_title, post_content, client_id)
+            VALUES(:post_title, :post_content, :client_id)';
+
+        try {
+            $client = $this->Root->prepare($query1);
+            $client->bindParam(':post_title', $post_title, PDO::PARAM_STR);
+            $client->bindParam(':post_content', $post_content, PDO::PARAM_STR);
+            $client->bindParam(':client_id', $client_id, PDO::PARAM_INT);
+
+            if ($client->execute()) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }

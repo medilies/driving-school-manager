@@ -141,6 +141,23 @@ class Apis extends Controller
 
     }
 
+    public function add_post()
+    {
+        if (!isset($_SESSION['id'])) {
+            Utility::redirect('/');
+        }
+
+        $result = $this->Api->add_post($_POST);
+        if ($result === true) {
+            echo "post ajouté";
+            Utility::redirect('/pages/forum');
+            die;
+        } else {
+            echo "erreur";
+            die;
+        }
+    }
+
     private function send_mail($to, $msg)
     {
         require_once PROJECT_ROOT . '/app/PHPMailer/src/Exception.php';
