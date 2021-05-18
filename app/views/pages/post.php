@@ -16,7 +16,7 @@ $comments = $data["post"]["comments"];
             à
             <span class="tiny-text colored-text3">  <?=$post['post_created_at']?>   </span>
         </p>
-        <p class="bg-lll-grey"> <?=$post['post_content']?>  </p>
+        <p class="bg-lll-grey mr1"> <?=nl2br($post['post_content'])?>  </p>
     </div>
 
 
@@ -28,11 +28,11 @@ $comments = $data["post"]["comments"];
                 <span class="tiny-text colored-text3">  <?=$comment['comment_created_at']?>   </span>
             </p>
             <hr class="mb1">
-            <p><?=$comment['comment_content']?></p>
+            <p> <?=nl2br($comment['comment_content'])?>    </p>
         </div>
     <?php endforeach;?>
 
-    <form action="/apis/add_comment" method="post">
+    <form action="/apis/add_comment" method="post" class="ml1">
         <input type="hidden" name="post_id" value="<?=$post['post_id']?>">
         <textarea name="comment_content" cols="60" rows="3" required></textarea>
         <button type="submit"  class="wp1"> Commenter   </button>

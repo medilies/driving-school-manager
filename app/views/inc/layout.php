@@ -41,16 +41,16 @@
 
             <?php elseif (isset($_SESSION['id'])): ?>
 
-                <a href="/pages/forum" class="mr1 ml1"> Forum    </a>
+                <a href="/pages/forum" class="mr1 ml1"> <i class="fas fa-users"></i> Forum    </a>
 
             <?php if ($_SESSION['id'] === 0): ?>
 
-                <a href="/pages/dash" class="mr1 ml1"> Examens    </a>
-                <a href="/pages/clients_list" class="mr1 ml1"> Dossiers    </a>
+                <a href="/pages/dash" class="mr1 ml1">  <i class="fas fa-calendar-day"></i> Examens    </a>
+                <a href="/pages/clients_list" class="mr1 ml1">  <i class="fas fa-folder"></i> Dossiers    </a>
 
             <?php else: ?>
 
-                <a href="/pages/agenda" class="mr1 ml1"> <?=$_SESSION['lname']?>    </a>
+                <a href="/pages/agenda" class="mr1 ml1">    <i class="fas fa-user"></i> <?=$_SESSION['lname']?>    </a>
 
             <?php endif;?>
 
@@ -66,6 +66,17 @@
 <main>
     <?=$content?>
 </main>
+
+<footer>
+    copyright 2021
+    <br>
+    auto école
+    <p class="tiny-text">
+    HAI EL CHOUHADA, BOULEDVARD BENBOULAID N°19. MASCARA - SIG
+    <br>
+    0xxx 56 89 78 - contact@autoecole.com
+    </p>
+</footer>
 
 
 <!-- SCRIPTS -->

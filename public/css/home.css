@@ -37,6 +37,8 @@
     justify-content: space-around;
 }
 #offre .card {
+    display: flex;
+    flex-direction: column;
     padding: 2rem 1rem;
     font-size: 1.5rem;
     font-weight: bold;
@@ -75,10 +77,4 @@
 #stats div {
     padding: 1rem;
     text-align: center;
-}
-footer {
-    background-color: #444;
-    font-weight: bold;
-    text-align: center;
-    padding: 1rem;
 }

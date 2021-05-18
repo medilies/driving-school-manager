@@ -1,4 +1,8 @@
+<?php require_once PROJECT_ROOT . '/app/views/inc/cover.php';?>
+
 <?php ob_start();?>
+
+<?=cover("Connecter à votre compte de condidats")?>
 
 <div class="center-xy mt5">
     <div class="form-card">

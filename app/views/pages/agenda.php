@@ -1,6 +1,9 @@
 <?php require_once PROJECT_ROOT . '/app/views/inc/exam_card.php';?>
+<?php require_once PROJECT_ROOT . '/app/views/inc/cover.php';?>
 
 <?php ob_start();?>
+
+<?=cover("Planning d'éxamens - Résultats d'éxamens")?>
 
 <?php
 foreach ($data['data'] as $key => $value) {

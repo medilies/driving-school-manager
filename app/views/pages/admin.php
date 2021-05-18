@@ -1,4 +1,8 @@
+<?php require_once PROJECT_ROOT . '/app/views/inc/cover.php';?>
+
 <?php ob_start();?>
+
+<?=cover("Gérér les éxamens et les dossier des condidats")?>
 
 <div class="center-xy mt5">
     <div class="form-card w-min">

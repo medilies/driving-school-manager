@@ -141,6 +141,12 @@ tr:hover:nth-child(n + 2) {
     box-shadow: inset 0px 0px 5px 2px #333;
 }
 
+hr {
+    border: none;
+    height: 1px;
+    background: #bbb;
+}
+
 /**************************************************************************/
 /*                        LAYOUT ELEMENTS  */
 /**************************************************************************/
@@ -166,13 +172,15 @@ nav {
 }
 
 main {
-    min-height: 85vh;
+    min-height: 82vh;
 }
 
 footer {
-    min-height: 3rem;
-    background: #333;
+    background-color: #333;
     color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
 }
 
 .max-w {
@@ -365,6 +373,10 @@ tr:nth-child(2n + 3).bg-red-l,
     width: min-content;
 }
 
+.h-parent {
+    height: inherit;
+}
+
 .inline {
     display: inline-block;
 }
@@ -437,6 +449,9 @@ tr:nth-child(2n + 3).bg-red-l,
 }
 .ml1 {
     margin-left: 1rem;
+}
+.mb2 {
+    margin-bottom: 2rem;
 }
 .mt5 {
     margin-top: 5rem;
@@ -611,10 +626,11 @@ tr:nth-child(2n + 3).bg-red-l,
 
 .post-card {
     padding: 1rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
     border-radius: 4px;
     background: #fff;
-    width: 1000px;
+    width: 90vw;
+    max-width: 1200px;
     margin: 1rem;
 }

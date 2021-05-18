@@ -1,6 +1,10 @@
+<?php require_once PROJECT_ROOT . '/app/views/inc/cover.php';?>
+
 <?php ob_start();?>
 
-<div class="center-xy mt5">
+<?=cover("Créer un compte de condidat")?>
+
+<div class="center-xy mt5 mb1">
     <div class="form-card">
         <p class="mb1 colored-text4"> Créez votre compte de client  </p>
         <div id="msg"></div>

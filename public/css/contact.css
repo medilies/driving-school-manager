@@ -33,9 +33,3 @@ textarea {
     color: var(--complementary-color11);
     font-weight: bold;
 }
-footer {
-    background-color: #444;
-    font-weight: bold;
-    text-align: center;
-    padding: 1rem;
-}

@@ -1,6 +1,9 @@
 <?php require_once PROJECT_ROOT . '/app/views/inc/get_post_user.php';?>
+<?php require_once PROJECT_ROOT . '/app/views/inc/cover.php';?>
 
 <?php ob_start();?>
+
+<?=cover("Espace de communauté")?>
 
 <?php $posts = $data['posts'];?>
 
@@ -17,15 +20,18 @@
     <?php foreach ($posts as $post): ?>
 
         <div class="post-card">
-            <h3>    <?=$post['post_title']?>    </h3>
-            <p>
-                <span class="colored-text2 ml05">  <?=get_name($post)?>  </span>
-                à
-                <span class="tiny-text colored-text3">  <?=$post['post_created_at']?>   </span>
-            </p>
-            <hr class="mb1">
-            <p><?=$post['post_content']?></p>
-            <a href="/pages/post/<?=$post['post_id']?>" class="tiny-text colored-text4 u">Commentaires</a>
+            <h3 class="mb05">    <?=$post['post_title']?>    </h3>
+            <p> <?=nl2br($post['post_content'])?>  </p>
+            <hr class="mt1 mb1">
+            <div class="flex-spaced ph2">
+                <p>
+                    Par
+                    <span class="colored-text2 ml05">   <?=get_name($post)?>  </span>
+                    à
+                    <span class="tiny-text colored-text3">  <?=$post['post_created_at']?>   </span>
+                </p>
+                <a href="/pages/post/<?=$post['post_id']?>" class="tiny-text colored-text4 u mr1">Commentaires</a>
+            </div>
         </div>
 
     <?php endforeach;?>
