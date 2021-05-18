@@ -47,8 +47,7 @@ class Apis extends Controller
             die;
         }
 
-        // if (password_verify($pass, $_POST['pass'])) {
-        if ($client['pass'] === $_POST['pass']) {
+        if (password_verify($_POST['pass'], $client['pass'])) {
             $_SESSION['id'] = $client['client_id'];
             $_SESSION['fname'] = $client['fname'];
             $_SESSION['lname'] = $client['lname'];

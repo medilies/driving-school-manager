@@ -18,7 +18,7 @@ class Api extends Database
 
         $fname = ucwords(strtolower($fname));
         $lname = ucwords(strtolower($lname));
-        // $pass = password_hash($pass, PASSWORD_DEFAULT);
+        $pass = password_hash($pass, PASSWORD_DEFAULT);
 
         try {
             $client = $this->Root->prepare($query1);
