@@ -79,8 +79,13 @@ class Apis extends Controller
         if ($_SESSION['id'] === 0) {
             $next_exam = $this->Api->next_exam($_POST);
             if ($next_exam === true) {
+
+                $to = $_POST['client_mail'];
                 $msg = "Vous aurez un éxamen le {$_POST['date']}";
-                $mail_sent = $this->send_mail($_POST['client_mail'], $msg);
+
+                $mail_sent = $this->send_mail($to, $msg);
+
+                echo "<br>";
                 echo "nouveau exam enregistré";
                 echo "<br>";
                 echo "email: $mail_sent";
@@ -173,30 +178,45 @@ class Apis extends Controller
 
     private function send_mail($to, $msg)
     {
-        require_once PROJECT_ROOT . '/app/PHPMailer/src/Exception.php';
-        require_once PROJECT_ROOT . '/app/PHPMailer/src/PHPMailer.php';
-        require_once PROJECT_ROOT . '/app/PHPMailer/src/SMTP.php';
-        require_once PROJECT_ROOT . '/app/PHPMailer/language/phpmailer.lang-fr.php';
+        $mail_user = "autoecole634";
+        $pass = "Autoecole634+";
+        $from = "Autoecole634@gmail.com";
+
+        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+
+        //Enable SMTP debugging.
+        // $mail->SMTPDebug = 3;
+        //Set PHPMailer to use SMTP.
+        $mail->isSMTP();
+        //Set SMTP host name
+        $mail->Host = "smtp.gmail.com";
+        //Set this to true if SMTP host requires authentication to send email
+        $mail->SMTPAuth = true;
+        //Provide username and password
+        $mail->Username = $mail_user;
+        $mail->Password = $pass;
+        //If SMTP requires TLS encryption then set it
+        $mail->SMTPSecure = "tls";
+        //Set TCP port to connect to
+        $mail->Port = 587;
+
+        $mail->From = $from;
+        $mail->FromName = "Auto ecole";
+
+        $mail->addAddress($to);
+
+        $mail->isHTML(true);
+
+        $mail->Subject = "Date d'éxamen";
+        $mail->Body = $msg;
+        $mail->AltBody = "Vous aurez un examen prochainement";
 
         try {
-
-            $mail = new PHPMailer\PHPMailer\PHPMailer();
-
-            $mail->FromName = "Auto ecole";
-            $mail->From = "admin@autoecole.com";
-            $mail->AddAddress($to, 'client');
-            $mail->Subject = "Examen de conduite";
-            $mail->Body = wordwrap($msg);
-
-            // $subject = "Examen de conduite";
-            // $msg = wordwrap($msg);
-            // $from = "Auto ecole <admin@autoecole.com>";
-            // $header = "From: {$from}";
-            // mail($to, $subject, $msg, $header);
-
-            return $mail->Send();
-        } catch (PHPMailer\PHPMailer\Exception$e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            $mail->send();
+            echo "Message has been sent successfully";
+        } catch (PHPMailer\PHPMailer\Exception $e) {
+            echo "Mailer Error: " . $mail->ErrorInfo;
+            die;
         }
     }
 

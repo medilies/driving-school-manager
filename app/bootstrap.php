@@ -9,3 +9,7 @@ spl_autoload_register(function ($class_name) {
         require_once PROJECT_ROOT . '/app/helpers/' . $class_name . '.php';
     }
 });
+
+use PHPMailer\PHPMailer\SMTP;
+
+require_once "vendor/autoload.php";
