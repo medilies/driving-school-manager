@@ -21,9 +21,9 @@
 
 <header>
     <nav>
-        <div class="max-w flex-spaced p1">
+        <div class="max-w flex-spaced p05">
             <div class="flex">
-                <a href="/" class="mr1 ml1"> Auto école   </a>
+                <a href="/" class="mr1 ml1 colored-text3 flex-center">    <img src="/public/assets/img/logo.png" height="32px" alt="">    Auto école   </a>
             </div>
             <div class="flex">
                 <a href="/" class="mr1 ml1"> Acceuil   </a>

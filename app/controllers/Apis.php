@@ -1,9 +1,4 @@
 <?php
-/**
- * Kinda loads HTML pages ith its related assets
- * Directly related with layout page
- */
-
 class Apis extends Controller
 {
 

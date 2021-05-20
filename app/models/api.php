@@ -1,5 +1,4 @@
 <?php
-// writte requests with heredoc ?
 class Api extends Database
 {
     public function __construct()
