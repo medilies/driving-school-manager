@@ -39,7 +39,7 @@ html {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "roboto";
     z-index: 50;
     z-index: inherit;
 }
@@ -154,6 +154,10 @@ nav a:hover {
 /**************************************************************************/
 /*                        LAYOUT ELEMENTS  */
 /**************************************************************************/
+body {
+    background-color: #f5f5f5;
+}
+
 nav {
     background: var(--primary-color);
     color: #fff;
