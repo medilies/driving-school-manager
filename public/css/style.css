@@ -641,6 +641,16 @@ tr:nth-child(2n + 3).bg-red-l,
     border: 2px var(--green) solid;
 }
 
+.client_unknown {
+    background-color: #ccc;
+}
+.client_no {
+    background-color: #f77;
+}
+.client_ok {
+    background-color: #7f7;
+}
+
 .post-card {
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,

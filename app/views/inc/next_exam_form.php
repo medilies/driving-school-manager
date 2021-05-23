@@ -9,8 +9,8 @@ function next_exam_form($client, $exam_type)
     <input type="hidden" name="client_mail" value="<?=$client['mail']?>">
     <input type="hidden" name="exam_type" value="<?=$exam_type?>">
     <label for="date" class="inline">   <i class='fas fa-calendar-alt'></i>  La date du prochain éxamen <?=$exam_type?>  </label>
-    <input type="date" name="date" class="inline w11" required>
-    <button type="submit" class="inline w7">    Confirmer   </button>
+    <input type="date" name="date" min="<?=date_format(date_create(), 'Y-m-d')?>" class="inline w11" required>
+    <button type="submit" class="inline w7">    Fixer la date   </button>
 </form>
 <?php $form = ob_get_clean();?>
 

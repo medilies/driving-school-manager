@@ -129,6 +129,60 @@ class Api extends Database
         }
     }
 
+    public function delete_exam(array $exam)
+    {
+        foreach ($exam as $key => $value) {
+            $$key = $value;
+        }
+
+        $table = 'exam_' . $exam_type;
+
+        $query1 = "DELETE FROM $table
+        WHERE exam_id = :exam_id";
+
+        try {
+
+            $exam = $this->Root->prepare($query1);
+            $exam->bindParam(':exam_id', $exam_id, PDO::PARAM_STR);
+
+            if ($exam->execute()) {
+                return true;
+            }
+
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
+    public function client_agreement(array $exam)
+    {
+        foreach ($exam as $key => $value) {
+            $$key = $value;
+        }
+
+        $table = 'exam_' . $exam_type;
+
+        $query1 = "UPDATE $table
+        SET  client_agreement = :client_agreement
+        WHERE exam_id = :exam_id";
+
+        try {
+
+            $exam = $this->Root->prepare($query1);
+            $exam->bindParam(':client_agreement', $client_agreement, PDO::PARAM_INT);
+            $exam->bindParam(':exam_id', $exam_id, PDO::PARAM_STR);
+
+            if ($exam->execute()) {
+                return true;
+            }
+
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
     public function delete_client($client_id)
     {
         $query1 = "DELETE FROM clients WHERE client_id = :client_id";

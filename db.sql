@@ -15,6 +15,7 @@ CREATE TABLE exam_code (
     planned_on DATE,
     result VARCHAR(15),
     client_id INTEGER,
+    client_agreement VARCHAR(10) DEFAULT 'unknown',
     FOREIGN KEY (client_id) REFERENCES clients(client_id) on DELETE CASCADE
 ) ENGINE = InnoDB CHARSET=UTF8MB4;
 
@@ -23,6 +24,7 @@ CREATE TABLE exam_creno (
     planned_on DATE,
     result VARCHAR(15),
     client_id INTEGER,
+    client_agreement VARCHAR(10) DEFAULT 'unknown',
     FOREIGN KEY (client_id) REFERENCES clients(client_id) on DELETE CASCADE
 ) ENGINE = InnoDB CHARSET=UTF8MB4;
 
@@ -31,6 +33,7 @@ CREATE TABLE exam_circuit (
     planned_on DATE,
     result VARCHAR(15),
     client_id INTEGER,
+    client_agreement VARCHAR(10) DEFAULT 'unknown',
     FOREIGN KEY (client_id) REFERENCES clients(client_id) on DELETE CASCADE
 ) ENGINE = InnoDB CHARSET=UTF8MB4;
 

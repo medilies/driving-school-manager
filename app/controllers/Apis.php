@@ -115,6 +115,42 @@ class Apis extends Controller
 
     }
 
+    public function delete_exam()
+    {
+        if ($_SESSION['id'] !== 0) {
+            Utility::redirect('/');
+        }
+
+        $result = $this->Api->delete_exam($_POST);
+        if ($result === true) {
+            echo "Résultat enregistré";
+            Utility::redirect('/pages/dash');
+        } else if ($result === false) {
+            echo "erreur";
+        }
+
+    }
+
+    public function client_agreement()
+    {
+        if (!isset($_SESSION['id'])) {
+            Utility::redirect('/');
+        }
+
+        $result = $this->Api->client_agreement($_POST);
+        if ($result === true) {
+            echo "Résultat enregistré";
+            if($_SESSION['id'] === 0){
+                Utility::redirect('/pages/dash');
+                die;
+            }
+            Utility::redirect('/pages/agenda');
+        } else if ($result === false) {
+            echo "erreur";
+        }
+
+    }
+
     public function logout()
     {
         session_unset();
