@@ -44,8 +44,8 @@ class Pages extends Controller
     {
         $data = [
             'title' => 'Codes',
-            'stylesheets_array' => ["code"],
-            'scripts_array' => [],
+            'stylesheets_array' => [],
+            'scripts_array' => ["code"],
         ];
         $this->view('pages/code', $data);
     }

@@ -29,7 +29,7 @@
                 <a href="/" class="mr1 ml1"> Acceuil   </a>
                 <a href="/pages/about" class="mr1 ml1">  Apropos </a>
                 <a href="/pages/contact" class="mr1 ml1">  Contact </a>
-                <a href="/pages/code" class="mr1 ml1">  Codes </a>
+                <a href="/pages/code" class="mr1 ml1">  Code </a>
 
             <?php if (!isset($_SESSION['id'])): ?>
 

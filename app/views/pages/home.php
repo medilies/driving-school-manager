@@ -2,7 +2,7 @@
 
 <div id="hero">
     <h1 >   L'auto école de vos reves   </h1>
-    <p class="m1">  Inscivez vous pour passez les exament pour votre permis de conduite </p>
+    <p class="m1">  Inscrivez vous et passez les examens pour votre permis de conduite </p>
     <a href="/pages/join" class="btn">  Rejoins nous   </a>
 </div>
 
