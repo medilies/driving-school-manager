@@ -48,6 +48,11 @@ for ($i = 0; $i < sizeof($clients); $i++) {
 
 <?=cover("Planning d'éxamens - Résultats d'éxamens")?>
 
+<form action="/pages/dash" method="post" class="mt1 mb1">
+    <input type="text" name="client_search" placeholder="Chercher un condidat" class="center-x">
+    <button type="submit" class="hidden"></button>
+</form>
+
 <div class="p1">
 <?php foreach ($clients as $client): ?>
     <h3 class="colored-text3">  <i class="fas fa-user-circle"></i> <?=$client['lname'] . ' ' . $client['fname']?></h3>

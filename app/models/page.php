@@ -47,6 +47,13 @@ class Page extends Database
         $query3 = "SELECT * FROM exam_circuit";
         $query4 = "SELECT * FROM clients WHERE client_id != 0";
 
+        if(isset($_POST['client_search']) && !empty($_POST['client_search'])){
+            $client_search = $_POST['client_search'];
+            $query4.= " AND CONCAT(lname, ' ', fname) LIKE '%$client_search%'";
+        }
+
+        $query4.=" ORDER BY client_id DESC";
+
         try {
             $code = $this->Root->prepare($query1);
             $creno = $this->Root->prepare($query2);
