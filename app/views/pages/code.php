@@ -11,7 +11,7 @@
 
     <div class="overlay hidden center-xy"></div>
 
-    <div class="w800px center-x mt1 pt1">
+    <div class="center-x m1 pt1">
 
     <?php foreach ($dir_details as $file_name): ?>
 

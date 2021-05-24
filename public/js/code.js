@@ -7,6 +7,8 @@ codeBookPages.forEach((codeBookPage) => {
 
         overlay.classList.remove("hidden");
 
+        location.href = location.origin + location.pathname + "#";
+
         const img = document.createElement("img");
         img.src = e.currentTarget.src;
 
