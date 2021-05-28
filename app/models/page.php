@@ -48,28 +48,51 @@ class Page extends Database
         $query4 = "SELECT * FROM clients WHERE client_id != 0";
 
         if(isset($_POST['client_search']) && !empty($_POST['client_search'])){
+
             $client_search = $_POST['client_search'];
-            $query4.= " AND CONCAT(lname, ' ', fname) LIKE '%$client_search%'";
+
+            if (strtotime($client_search) !== false) {
+                
+                $exam_date = date('Y-m-d',strtotime($client_search));
+                
+                $query4 = "SELECT * FROM clients WHERE client_id 
+                    IN(
+                        SELECT client_id FROM exam_code WHERE planned_on = '$exam_date'
+                        UNION 
+                        SELECT client_id FROM exam_creno WHERE planned_on = '$exam_date'
+                        UNION 
+                        SELECT client_id FROM exam_circuit WHERE planned_on = '$exam_date'
+                    )
+                ";
+
+            }
+            else{
+
+                $client_search = $client_search;
+                $query4.= " AND CONCAT(lname, ' ', fname) LIKE '%$client_search%'";
+
+            }
         }
 
         $query4.=" ORDER BY client_id DESC";
-
+        
+        
         try {
             $code = $this->Root->prepare($query1);
             $creno = $this->Root->prepare($query2);
             $circuit = $this->Root->prepare($query3);
             $clients = $this->Root->prepare($query4);
-
+            
             $code->execute();
             $creno->execute();
             $circuit->execute();
             $clients->execute();
-
+            
             $code = $code->fetchAll();
             $creno = $creno->fetchAll();
             $circuit = $circuit->fetchAll();
             $clients = $clients->fetchAll();
-
+            
             return [
                 'code' => $code,
                 'creno' => $creno,
