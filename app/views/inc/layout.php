@@ -7,6 +7,9 @@
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
     <?php if (isset($data['stylesheets_array'])): ?>
         <?php foreach ($data['stylesheets_array'] as $stylesheet_name): ?>
             <link rel="stylesheet" href="/css/<?=$stylesheet_name?>.css">

@@ -15,3 +15,8 @@
 #text {
     width: 35rem;
 }
+h2.about-text {
+    color: #333;
+    font-family: lobster;
+    font-size: 50px;
+}

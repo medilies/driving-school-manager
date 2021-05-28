@@ -25,6 +25,7 @@ form > * {
 input,
 textarea {
     border-color: var(--complementary-color21);
+    width: 15rem;
 }
 #data p {
     font-size: 1.5rem;
