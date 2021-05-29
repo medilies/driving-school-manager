@@ -106,6 +106,38 @@ class Page extends Database
         }
     }
 
+    public function client($client_id){
+        $query = "SELECT * FROM clients WHERE client_id = :client_id";
+
+        try{
+            $client = $this->Root->prepare($query);
+            $client->bindParam('client_id', $client_id, PDO::PARAM_STR);
+            $client->execute();
+            $client = $client->fetch();
+
+            return $client;
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
+    public function dossier($client_id){
+        $query = "SELECT * FROM dossier WHERE client_id = :client_id";
+
+        try{
+            $dossier = $this->Root->prepare($query);
+            $dossier->bindParam('client_id', $client_id, PDO::PARAM_STR);
+            $dossier->execute();
+            $dossier = $dossier->fetch();
+
+            return $dossier;
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
     public function posts()
     {
         $query1 = "SELECT * FROM posts

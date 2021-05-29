@@ -53,6 +53,7 @@ $clients = $data['clients'];
         <td><a href="<?=get_file_path("client_health_cert", $client['mail'])?>" target="_blanc" class="colored-text4 u">  Certificat médicale   </a></td>
         <td><a href="<?=get_file_path("client_blood", $client['mail'])?>" target="_blanc" class="colored-text4 u">  Groupage   </a></td>
         <td><a href="<?=get_file_path("client_residence", $client['mail'])?>" target="_blanc" class="colored-text4 u">  Résidence   </a></td>
+        <td><a href="/pages/validation_dossier/<?=$client['client_id']?>" class="colored-text1">  <i class="fas fa-folder-open fa-2x"></i>   </a></td>
         <td><a href="/apis/delete_client/<?=$client['client_id']?>" class="colored-text1">  <i class="fas fa-trash-alt fa-2x"></i>   </a></td>
     </tr>
     <?php endforeach;?>

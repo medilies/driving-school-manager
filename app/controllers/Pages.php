@@ -182,4 +182,42 @@ class Pages extends Controller
         $this->view('pages/post', $data);
     }
 
+    public function validation_dossier($client_id){
+        if (!isset($_SESSION['id']) || $_SESSION['id'] !== 0) {
+            Utility::redirect('/');
+        }
+
+        $client = $this->page->client($client_id);
+        $dossier = $this->page->dossier($client_id);
+
+        $data = [
+            'title' => 'Dossiers',
+            'stylesheets_array' => [],
+            'scripts_array' => [],
+            'client' => $client,
+            'dossier' => $dossier,
+        ];
+
+        $this->view('pages/dossier', $data);
+    }
+
+    public function my_dossier(){
+        if (!isset($_SESSION['id']) || $_SESSION['id'] === 0) {
+            Utility::redirect('/');
+        }
+
+        $client = $this->page->client($_SESSION['id']);
+        $dossier = $this->page->dossier($_SESSION['id']);
+
+        $data = [
+            'title' => 'Dossiers',
+            'stylesheets_array' => [],
+            'scripts_array' => [],
+            'client' => $client,
+            'dossier' => $dossier,
+        ];
+
+        $this->view('pages/dossier', $data);
+    }
+
 }

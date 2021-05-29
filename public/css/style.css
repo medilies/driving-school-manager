@@ -689,3 +689,17 @@ tr:nth-child(2n + 3).bg-red-l,
     max-width: 100%;
     max-height: 100%;
 }
+
+.element_dossier {
+    background-color: #ddd;
+    padding: 0.5rem;
+    height: 150px;
+    width: 150px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.element_dossier img {
+    max-width: 100%;
+    max-height: 100%;
+}

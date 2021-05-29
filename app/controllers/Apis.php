@@ -33,6 +33,20 @@ class Apis extends Controller
         die;
     }
 
+    public function edit_dossier(){
+
+        $file_name = $_POST['file_name'];
+        $email = $_SESSION['mail'];
+
+        $this->remove_dossier_element($file_name, $email);
+        $this->store_file($file_name, $email);
+        $this->Api->edit_dossier($file_name);
+
+
+        echo 'dossier modifier';
+        Utility::redirect('/pages/my_dossier');
+    }
+
     public function login()
     {
         $client = $this->Api->login($_POST);
@@ -212,10 +226,25 @@ class Apis extends Controller
         }
     }
 
+    public function validation_dossier(){
+        if ($_SESSION['id'] !== 0) {
+            Utility::redirect('/');
+        }
+
+        $result = $this->Api->validation_dossier();
+        if ($result === true) {
+            echo "Validation du dossier appliqué";
+            die;
+        } else {
+            echo "erreur";
+            die;
+        }
+    }
+
     private function send_mail($to, $msg)
     {
-        $mail_user = "autoecole634";
-        $pass = "Autoecole634+";
+        $mail_user = "";
+        $pass = "";
         $from = "Autoecole634@gmail.com";
 
         $mail = new PHPMailer\PHPMailer\PHPMailer(true);
@@ -278,6 +307,23 @@ class Apis extends Controller
         } else {
             move_uploaded_file($temp_name, $path_filename_ext);
             // echo "Congratulations! File Uploaded Successfully.";
+        }
+    }
+
+    private function remove_dossier_element($file_name, $email){
+        $png = PROJECT_ROOT . "/public/assets/uploads/$email/$file_name.png";
+        $jpg = PROJECT_ROOT . "/public/assets/uploads/$email/$file_name.jpg";
+        $jpeg = PROJECT_ROOT . "/public/assets/uploads/$email/$file_name.jpeg";
+        $pdf = PROJECT_ROOT . "/public/assets/uploads/$email/$file_name.pdf";
+    
+        if (file_exists($png)) {
+            unlink($png);
+        } else if (file_exists($jpg)) {
+            unlink($jpg);
+        } else if (file_exists($jpeg)) {
+            unlink($jpeg);
+        } else if (file_exists($pdf)) {
+            unlink($pdf);
         }
     }
 }

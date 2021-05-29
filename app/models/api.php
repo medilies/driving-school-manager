@@ -248,4 +248,40 @@ class Api extends Database
             return $e->getMessage();
         }
     }
+
+    public function validation_dossier(){
+
+        foreach ($_POST as $key => $value) {
+            $$key = $value;
+        }
+
+        $query = "UPDATE dossier
+        SET  $element = :validation_action
+        WHERE client_id = :client_id";
+
+        try{
+            $dossier = $this->Root->prepare($query);
+            $dossier->bindParam(':validation_action', $validation_action, PDO::PARAM_INT);
+            $dossier->bindParam(':client_id', $client_id, PDO::PARAM_STR);
+            $dossier->execute();
+            return true;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function edit_dossier($file_name){
+        $query = "UPDATE dossier
+        SET  $file_name = NULL
+        WHERE client_id = :client_id";
+
+        try{
+            $dossier = $this->Root->prepare($query);
+            $dossier->bindParam(':client_id', $_SESSION['id'], PDO::PARAM_STR);
+            $dossier->execute();
+            return true;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }

@@ -49,8 +49,10 @@ for ($i = 0; $i < sizeof($clients); $i++) {
 <?=cover("Planning d'éxamens - Résultats d'éxamens")?>
 
 <form action="/pages/dash" method="post" class="mt1 mb1">
-    <input type="text" name="client_search" placeholder="Chercher un condidat" class="center-x">
-    <button type="submit" class="hidden"></button>
+    <div class="center-x wp1">
+    <input type="text" name="client_search" placeholder="Chercher un condidat" class="inline">
+    <button type="submit" class="inline wp1">  <i class="fas fa-search"></i>   </button>
+    </div>
 </form>
 
 <div class="p1">

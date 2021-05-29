@@ -10,6 +10,16 @@ CREATE TABLE clients (
     pass VARCHAR(100) NOT NULL 
 ) ENGINE = InnoDB CHARSET=UTF8MB4;
 
+CREATE TABLE dossier ( 
+    client_id INTEGER PRIMARY KEY AUTO_INCREMENT, 
+    client_img TINYINT,
+    client_cni TINYINT,
+    client_health_cert TINYINT,
+    client_blood TINYINT,
+    client_residence TINYINT,
+    FOREIGN KEY (client_id) REFERENCES clients(client_id) on DELETE CASCADE
+) ENGINE = InnoDB CHARSET=UTF8MB4;
+
 CREATE TABLE exam_code (
     exam_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     planned_on DATE,

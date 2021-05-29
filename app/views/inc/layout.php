@@ -54,6 +54,7 @@
             <?php else: ?>
 
                 <a href="/pages/agenda" class="mr1 ml1">    <i class="fas fa-user"></i> <?=$_SESSION['lname']?>    </a>
+                <a href="/pages/my_dossier" class="mr1 ml1">    <i class="fas fa-folder-open"></i> Mon dossier    </a>
 
             <?php endif;?>
 
