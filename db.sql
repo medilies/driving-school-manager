@@ -20,6 +20,14 @@ CREATE TABLE dossier (
     FOREIGN KEY (client_id) REFERENCES clients(client_id) on DELETE CASCADE
 ) ENGINE = InnoDB CHARSET=UTF8MB4;
 
+CREATE TABLE versements(
+    versement_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    client_id INTEGER,
+    amount FLOAT NOT NULL,
+    versement_day DATETIME DEFAULT CURRENT_TIMESTAMP(),
+    FOREIGN KEY (client_id) REFERENCES clients(client_id) on DELETE CASCADE
+) ENGINE = InnoDB CHARSET=UTF8MB4;
+
 CREATE TABLE exam_code (
     exam_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     planned_on DATE,

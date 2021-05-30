@@ -241,6 +241,21 @@ class Apis extends Controller
         }
     }
 
+    public function add_versement(){
+        if ($_SESSION['id'] !== 0) {
+            Utility::redirect('/');
+        }
+
+        $result = $this->Api->add_versement();
+        if ($result === true) {
+            echo "Versement enregistré";
+            die;
+        } else {
+            echo "erreur";
+            die;
+        }
+    }
+
     private function send_mail($to, $msg)
     {
         $mail_user = "";

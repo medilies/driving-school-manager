@@ -284,4 +284,18 @@ class Api extends Database
             return $e->getMessage();
         }
     }
+
+    public function add_versement(){
+        $query = "INSERT INTO versements(client_id, amount) VALUES(:client_id, :amount)";
+
+        try{
+            $dossier = $this->Root->prepare($query);
+            $dossier->bindParam(':client_id', $_POST['client_id'], PDO::PARAM_STR);
+            $dossier->bindParam(':amount', $_POST['amount'], PDO::PARAM_STR);
+            $dossier->execute();
+            return true;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }

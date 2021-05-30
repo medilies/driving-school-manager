@@ -106,6 +106,25 @@ class Page extends Database
         }
     }
 
+    public function clients_list(){
+        $query = "SELECT clients.client_id, clients.fname, clients.lname, clients.bday, clients.mail, clients.phone, SUM(versements.amount) AS versements_sum FROM clients
+        LEFT JOIN versements ON clients.client_id = versements.client_id
+        WHERE clients.client_id != 0
+        GROUP BY clients.client_id
+        ORDER BY clients.client_id DESC";
+
+        try{
+            $clients = $this->Root->prepare($query);
+            $clients->execute();
+            $clients = $clients->fetchAll();
+
+            return $clients;
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
     public function client($client_id){
         $query = "SELECT * FROM clients WHERE client_id = :client_id";
 
@@ -132,6 +151,31 @@ class Page extends Database
             $dossier = $dossier->fetch();
 
             return $dossier;
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
+    public function versements($client_id){
+        $query1 = "SELECT * FROM versements 
+        WHERE client_id = :client_id";
+
+        $query2 = "SELECT SUM(amount) AS versements_sum FROM versements 
+        WHERE client_id = :client_id";
+
+        try{
+            $versements = $this->Root->prepare($query1);
+            $versements->bindParam('client_id', $client_id, PDO::PARAM_STR);
+            $versements->execute();
+            $versements = $versements->fetchAll();
+
+            $sum = $this->Root->prepare($query2);
+            $sum->bindParam('client_id', $client_id, PDO::PARAM_STR);
+            $sum->execute();
+            $sum = $sum->fetch();
+
+            return [$versements, $sum["versements_sum"]];
         } catch (PDOException $e) {
 
             return $e->getMessage();

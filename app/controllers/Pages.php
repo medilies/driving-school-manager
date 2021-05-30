@@ -134,7 +134,7 @@ class Pages extends Controller
             Utility::redirect('/');
         }
 
-        $clients = $this->page->clients()['clients'];
+        $clients = $this->page->clients_list();
 
         $data = [
             'title' => 'Dossiers',
@@ -144,6 +144,26 @@ class Pages extends Controller
         ];
 
         $this->view('pages/clients_list', $data);
+    }
+
+    public function versements($client_id){
+        if (!isset($_SESSION['id']) || $_SESSION['id'] !== 0) {
+            Utility::redirect('/');
+        }
+
+        $client = $this->page->client($client_id);
+        $versements = $this->page->versements($client_id);
+
+        $data = [
+            'title' => 'Dossiers',
+            'stylesheets_array' => [],
+            'scripts_array' => [],
+            'client' => $client,
+            'versements' => $versements[0],
+            'versements_sum' => $versements[1],
+        ];
+
+        $this->view('pages/versements', $data);
     }
 
     public function forum()

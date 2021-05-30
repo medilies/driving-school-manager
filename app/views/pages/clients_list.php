@@ -35,6 +35,7 @@ $clients = $data['clients'];
         <th>Date de naissance</th>
         <th>Email</th>
         <th>Téléphone</th>
+        <th>Versement</th>
         <th>Photo</th>
         <th>CNI</th>
         <th>Certificat médicale</th>
@@ -48,6 +49,16 @@ $clients = $data['clients'];
         <td><?=$client['bday']?></td>
         <td><?=$client['mail']?></td>
         <td><?=$client['phone']?></td>
+
+        <td>
+        <?php if($client['versements_sum'] >= 40000): ?>
+            <i class="fas fa-check"></i>
+        <?php elseif($client['versements_sum'] < 40000): ?>
+            <?=intval($client['versements_sum'])?>/40000 DA 
+        <?php endif; ?>
+            <a href="/pages/versements/<?=$client['client_id']?>" class="colored-text1 pointer"> <i class="fas fa-list-alt"></i>   </a>
+        </td>
+
         <td><a href="<?=get_file_path("client_img", $client['mail'])?>" target="_blanc" class="colored-text4 u">  Photo   </a></td>
         <td><a href="<?=get_file_path("client_cni", $client['mail'])?>" target="_blanc" class="colored-text4 u">  CNI   </a></td>
         <td><a href="<?=get_file_path("client_health_cert", $client['mail'])?>" target="_blanc" class="colored-text4 u">  Certificat médicale   </a></td>
